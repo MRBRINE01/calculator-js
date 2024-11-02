@@ -1,21 +1,79 @@
+let displayText = "";
+let num1 = null;
+let num2 = null;
+let oprator = null;
 
+const displayScreen = document.querySelector('.ouputScreen h3');
 
+function updateDisplay(value){
+    displayText += value;
+    displayScreen.textContent = displayText;
+};
+
+function clearDisplay(){
+    displayText = "";
+    num1 = null;
+    num2 = null;
+    operate = null;
+    displayScreen.textContent = "0";
+};
+
+document.querySelectorAll('.board button').forEach(button => {
+    button.addEventListener('click', () => {
+        const value = button.id;
+
+        console.log(value);
+
+        if(!isNaN(value) || value == '.'){
+            updateDisplay(value);
+        }
+        if(value == "C" || value == "CE"){
+            clearDisplay();
+        }
+        if(value == "delete"){
+            deleteLastDigit();
+        }
+        if(value == "="){
+            displayResult();
+        }
+        if(value == "+" || value == "-" || value == "*" || value == "/"){
+            setOperator(value);
+        }
+    });
+});
+
+function deleteLastDigit(){
+    displayText = displayText.slice(0,-1);
+    displayScreen.textContent = displayText;
+};
+
+function setOperator(op){
+    num1 = parseFloat(displayText);
+    oprator = op;
+    displayText = "";
+};
+
+function displayResult(){
+    num2 = parseFloat(displayText);
+    displayScreen.textContent  = operate();
+    displayText = "";
+}
 
 
 function operate(){
-    let num1, num2, oprator, result;
+    let result;
 
     if(oprator == '+'){
-        result = add(num1, num2);
+        return result = add(num1, num2);
     }
     if(oprator == '-'){
-        result = sub(num1, num2);
+        return result = sub(num1, num2);
     }
     if(oprator == '/'){
-        result = div(num1, num2);
+        return result = div(num1, num2);
     }
     if(oprator == '*'){
-        result = mul(num1, num2);
+        return result = mul(num1, num2);
     }
 }
 
