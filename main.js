@@ -2,12 +2,14 @@ let displayText = "";
 let num1 = null;
 let num2 = null;
 let oprator = null;
+let result;
 
-const displayScreen = document.querySelector('.outputScreen .output');
+const displayOutput = document.querySelector('.outputScreen .output');
+const displayPrevOutput = document.querySelector('.outputScreen .prevOutput');
 
 function updateDisplay(value){
     displayText += value;
-    displayScreen.textContent = displayText;
+    displayOutput.textContent = displayText;
 };
 
 function clearDisplay(){
@@ -15,7 +17,8 @@ function clearDisplay(){
     num1 = null;
     num2 = null;
     operate = null;
-    displayScreen.textContent = "0";
+    displayOutput.textContent = "0";
+    displayPrevOutput.textContent = "";
 };
 
 document.querySelectorAll('.board button').forEach(button => {
@@ -28,13 +31,13 @@ document.querySelectorAll('.board button').forEach(button => {
         if(value == "C" || value == "CE"){
             clearDisplay();
         }
-        if(value == "delete"){
+        else if(value == "delete"){
             deleteLastDigit();
         }
-        if(value == "="){
+        else if(value == "="){
             displayResult();
         }
-        if(value == "+" || value == "-" || value == "x" || value == "/"){
+        else if(value == "+" || value == "-" || value == "*" || value == "/"){
             setOperator(value);
         }
         else if(!isNaN(value) || value == '.'){
@@ -45,19 +48,23 @@ document.querySelectorAll('.board button').forEach(button => {
 
 function deleteLastDigit(){
     displayText = displayText.slice(0,-1);
-    displayScreen.textContent = displayText;
+    displayOutput.textContent = displayText;
 };
 
 function setOperator(op){
     num1 = parseFloat(displayText);
     oprator = op;
+    displayPrevOutput.textContent = displayText + " " + op + " ";
     displayText = "";
 };
 
 function displayResult(){
     num2 = parseFloat(displayText);
-    displayScreen.textContent  = operate();
-    displayText = "";
+    displayPrevOutput.textContent += displayText + " =";
+    result = operate();
+    displayOutput.textContent = result ;
+    num1 = result;
+    displayText = result;
 }
 
 
