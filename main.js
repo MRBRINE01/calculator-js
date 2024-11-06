@@ -3,7 +3,7 @@ let num1 = null;
 let num2 = null;
 let oprator = null;
 
-const displayScreen = document.querySelector('.ouputScreen h3');
+const displayScreen = document.querySelector('.outputScreen .output');
 
 function updateDisplay(value){
     displayText += value;
@@ -24,9 +24,7 @@ document.querySelectorAll('.board button').forEach(button => {
 
         console.log(value);
 
-        if(!isNaN(value) || value == '.'){
-            updateDisplay(value);
-        }
+        
         if(value == "C" || value == "CE"){
             clearDisplay();
         }
@@ -36,8 +34,11 @@ document.querySelectorAll('.board button').forEach(button => {
         if(value == "="){
             displayResult();
         }
-        if(value == "+" || value == "-" || value == "*" || value == "/"){
+        if(value == "+" || value == "-" || value == "x" || value == "/"){
             setOperator(value);
+        }
+        else if(!isNaN(value) || value == '.'){
+            updateDisplay(value);
         }
     });
 });

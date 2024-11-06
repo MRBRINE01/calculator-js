@@ -5,46 +5,49 @@
 <script src="main.js" defer></script>
 </head>
 <body>
-    <div class="ouputScreen">
-        <h3>3+3 = 6</h3>
+<div class="layout">
+    <div class="outputScreen">
+        <p class="lastOutout"></p>
+        <p class="output">0</p>
     </div>
-
+    
     <div class="board">
         <div class="row1">
-            <button id="%">%</button>
-            <button id="CE">CE</button>
-            <button id="C">C</button>
-            <button id="delete">DEL</button>
+            <button id="delete" class="op">DEL</button>
+            <button id="CE" class="op">CE</button>
+            <button id="C" class="op">C</button>
+            <button id="/" class="op">/</button>
         </div>
-
+    
         <div class="row2">
             <button id="7">7</button>
             <button id="8">8</button>
             <button id="9">9</button>
-            <button id="x">x</button>
+            <button id="x" class="op">x</button>
         </div>
-
+    
         <div class="row3">
             <button id="4">4</button>
             <button id="5">5</button>
             <button id="6">6</button>
-            <button id="-">-</button>
+            <button id="-" class="op">-</button>
         </div>
-
+    
         <div class="row4">
             <button id="1">1</button>
             <button id="2">2</button>
             <button id="3">3</button>
-            <button id="+">+</button>
+            <button id="+" class="op">+</button>
         </div>
-
+    
         <div class="row5">
             <button id="+/-">+/-</button>
             <button id="0">0</button>
             <button id=".">.</button>
-            <button id="=">=</button>
+            <button id="=" class="op" style="background-color: rgb(4, 134, 182) ;">=</button>
         </div>
     </div>
+</div>
     
 </body>
 </html>
